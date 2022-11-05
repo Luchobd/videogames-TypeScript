@@ -32,7 +32,6 @@ const getApiInfo: RequestHandler = async (req, res, next) => {
         arrayGenres.push(genresFilter);
       }
       const genresFlat = arrayGenres.flat();
-      const genresMap = genresFlat.map((e: any) => e._id);
 
       // const platfomsMap = e.platforms.map((e:prueba) => e.platform);
       console.log(e.platforms);
@@ -40,7 +39,7 @@ const getApiInfo: RequestHandler = async (req, res, next) => {
         idVideogames: e.id,
         name: e.name,
         background_image: e.background_image,
-        genres: genresMap,
+        genres: genresFlat.map((e: any) => e._id),
         description: descriptionGame,
         released: e.released,
         rating: e.rating,

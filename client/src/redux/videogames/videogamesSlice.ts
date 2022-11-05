@@ -1,10 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-export interface Video {
-  videogames: Array<string> | void;
-  copyVideogames: Array<string> | void;
-  videogamesDetail: Object | void;
-}
+import { Video } from "../../interfaces/slices.interfaces";
 
 const initialState: Video = {
   videogames: [],

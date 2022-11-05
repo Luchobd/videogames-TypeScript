@@ -1,8 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-export interface Genre {
-  genres: Array<string> | void;
-}
+import { Genre } from "../../interfaces/slices.interfaces";
 
 const initialState: Genre = {
   genres: [],
