@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 import { getAllVideogames } from "../redux/videogames/videogamesActions";
 import { getAllGenres } from "../redux/genres/genresActions";
-
+import { Paginated } from "./Paginated";
 import { CardVideogame } from "./CardVideogame";
+import { SearchBar } from "./SearchBar";
 
 export const CardsVideogames: React.FC = () => {
   const dispatch = useCustomDispatch();
@@ -20,10 +21,39 @@ export const CardsVideogames: React.FC = () => {
     dispatch(getAllGenres());
   }, [dispatch]);
 
+  // Paginated
+  const [currentPage, setCurrentPage] = useState(1);
+  const [videogamesPerPage] = useState(15);
+
+  const indexOfLastVideogames = currentPage * videogamesPerPage;
+  const indexOfFirstVideogames = indexOfLastVideogames - videogamesPerPage;
+  const currentVideogames = videogames.slice(
+    indexOfFirstVideogames,
+    indexOfLastVideogames
+  );
+
+  const paginatedFunction = (
+    pageNumber: React.SetStateAction<number>
+  ): void => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <div>
-      {videogames.length &&
-        videogames.map((game: any, index) => {
+      <div>
+        <SearchBar setCurrentPege={setCurrentPage} />
+      </div>
+      <div>
+        <Paginated
+          videogamesPerPage={videogamesPerPage}
+          allVideogames={videogames.length}
+          paginated={paginatedFunction}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
+
+      {videogames.length ? (
+        currentVideogames.map((game: any, index) => {
           return (
             <div key={index}>
               <Link to={`/${game._id}`} className="">
@@ -36,7 +66,18 @@ export const CardsVideogames: React.FC = () => {
               </Link>
             </div>
           );
-        })}
+        })
+      ) : (
+        <div>Loading</div>
+      )}
+      <div>
+        <Paginated
+          videogamesPerPage={videogamesPerPage}
+          allVideogames={videogames.length}
+          paginated={paginatedFunction}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
     </div>
   );
 };

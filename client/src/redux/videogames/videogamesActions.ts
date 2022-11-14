@@ -9,7 +9,15 @@ import {
 // All Videogames
 export const getAllVideogames =
   () =>
-  async (dispatch: any): Promise<AxiosResponse | AxiosError> => {
+  async (
+    dispatch: (arg0: {
+      payload: string[];
+      type: string;
+    }) =>
+      | AxiosResponse<any, any>
+      | AxiosError<unknown, any>
+      | PromiseLike<AxiosResponse<any, any> | AxiosError<unknown, any>>
+  ): Promise<AxiosResponse | AxiosError> => {
     try {
       const resp: AxiosResponse = await axios.get(
         "http://localhost:3001/videogames"
@@ -23,7 +31,15 @@ export const getAllVideogames =
 // Query Videogames
 export const getNameVideogame =
   (name: any) =>
-  async (dispatch: any): Promise<AxiosResponse | AxiosError> => {
+  async (
+    dispatch: (arg0: {
+      payload: string[];
+      type: string;
+    }) =>
+      | AxiosResponse<any, any>
+      | AxiosError<unknown, any>
+      | PromiseLike<AxiosResponse<any, any> | AxiosError<unknown, any>>
+  ): Promise<AxiosResponse | AxiosError> => {
     try {
       const resp: AxiosResponse = await axios.get(
         `http://localhost:3001/videogames?name=${name}`
@@ -44,13 +60,15 @@ export const postVideogame = (payload: any) => async () => {
 };
 
 // Detail Videogames
-export const getDetailVideogames = (id: string) => async (dispatch: any) => {
-  try {
-    const resp: AxiosResponse = await axios.get(
-      `http://localhost:3001/videogames/${id}`
-    );
-    return dispatch(getDetail(resp.data));
-  } catch (error) {
-    return error as AxiosError;
-  }
-};
+export const getDetailVideogames =
+  (id: string) =>
+  async (dispatch: (arg0: { payload: Object; type: string }) => any) => {
+    try {
+      const resp: AxiosResponse = await axios.get(
+        `http://localhost:3001/videogames/${id}`
+      );
+      return dispatch(getDetail(resp.data));
+    } catch (error) {
+      return error as AxiosError;
+    }
+  };

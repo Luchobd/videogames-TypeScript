@@ -1,8 +1,10 @@
+import { ObjectId } from "mongodb";
+
 export interface arrayGetGames {
   idVideogames: string;
   name: string[];
   background_image: string;
-  genres: string[];
+  genres: ObjectId[];
   description: string;
   released: string;
   rating: number;
@@ -12,7 +14,16 @@ export interface arrayGetGames {
 export interface apiGetGames {
   id: string;
   name: string[];
-  genresFind: string[];
+  genres: [
+    {
+      id: string;
+      name: string;
+      slug: string;
+      games_count: number;
+      image_background: string;
+    }
+  ];
+
   background_image: string;
   released: string;
   rating: number;

@@ -21,29 +21,30 @@ const getApiInfo: RequestHandler = async (req, res, next) => {
         `https://api.rawg.io/api/games/${e.id}?key=${API_KEY}`
       );
       let descriptionGame = searchId.data.description_raw;
-      const genresEach = genresFind.map((e: genresName) => e.name);
-      console.log(genresFind);
+      const genresEach = e.genres.map((e) => e.name);
+      // console.log(genresEach);
 
       let arrayGenres = [];
       for (let i = 0; i < genresEach.length; i++) {
-        const genresFilter = genresFind.filter(
-          (e: genresName) => e.name === genresEach[i]
-        );
+        const genresFilter = genresFind.filter((e) => e.name === genresEach[i]);
         arrayGenres.push(genresFilter);
       }
-      const genresFlat = arrayGenres.flat();
 
+      const genresFlat = arrayGenres.flat();
+      const genresMap = genresFlat.map((e) => e._id);
       // const platfomsMap = e.platforms.map((e:prueba) => e.platform);
-      console.log(e.platforms);
+      // console.log(e.platforms);
+      console.log(genresMap);
+
       getGames.push({
         idVideogames: e.id,
         name: e.name,
         background_image: e.background_image,
-        genres: genresFlat.map((e: any) => e._id),
+        genres: genresMap,
         description: descriptionGame,
         released: e.released,
         rating: e.rating,
-        platforms: e.platforms.map((e: any) => e.platform.name),
+        platforms: e.platforms.map((e: string | any) => e.platform.name),
       });
     });
   }
