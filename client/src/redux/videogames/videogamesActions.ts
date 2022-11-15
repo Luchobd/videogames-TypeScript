@@ -3,7 +3,8 @@ import {
   getVideogames,
   getNameVideogames,
   getDetail,
-  //   postVideogames,
+  // getPlatformsList,
+  // postVideogames,
 } from "../videogames/videogamesSlice";
 
 // All Videogames
@@ -61,7 +62,7 @@ export const postVideogame = (payload: any) => async () => {
 
 // Detail Videogames
 export const getDetailVideogames =
-  (id: string) =>
+  (id: string | undefined) =>
   async (dispatch: (arg0: { payload: Object; type: string }) => any) => {
     try {
       const resp: AxiosResponse = await axios.get(
@@ -72,3 +73,12 @@ export const getDetailVideogames =
       return error as AxiosError;
     }
   };
+
+// List Platforms
+// export const getPlatformsLists = () => async () => {
+//   const resp: AxiosResponse = await axios.post(
+
+//     payload:
+//   );
+//   return resp;
+// };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useCustomDispatch, useCustomSelector } from "../hooks/redux";
 import { Link } from "react-router-dom";
+import { Navbar } from "./Navbar";
 
 import { getAllVideogames } from "../redux/videogames/videogamesActions";
 import { getAllGenres } from "../redux/genres/genresActions";
@@ -40,6 +41,7 @@ export const CardsVideogames: React.FC = () => {
 
   return (
     <div>
+      <Navbar />
       <div>
         <SearchBar setCurrentPege={setCurrentPage} />
       </div>
@@ -62,6 +64,7 @@ export const CardsVideogames: React.FC = () => {
                   genres={game.genres.map((e: string) => e)}
                   rating={game.rating}
                   background_image={game.background_image}
+                  // platforms={game.platforms}
                 />
               </Link>
             </div>

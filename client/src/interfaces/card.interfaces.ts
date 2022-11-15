@@ -9,6 +9,7 @@ export interface PropsCard {
   }>;
   rating: number;
   background_image: string;
+  platforms?: string[];
 }
 
 export interface PropsPaginated {

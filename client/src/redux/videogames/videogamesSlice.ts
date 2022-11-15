@@ -5,6 +5,7 @@ const initialState: Video = {
   videogames: [],
   copyVideogames: [],
   videogamesDetail: {},
+  allPlatforms: [],
 };
 
 const videogamesSlice = createSlice({
@@ -24,10 +25,18 @@ const videogamesSlice = createSlice({
     postVideogames: (state) => {
       return { ...state };
     },
+    getPlatformsList: (state, action: PayloadAction<Array<string>>) => {
+      state.allPlatforms = action.payload;
+    },
   },
 });
 
-export const { getVideogames, getNameVideogames, getDetail, postVideogames } =
-  videogamesSlice.actions;
+export const {
+  getVideogames,
+  getNameVideogames,
+  getDetail,
+  postVideogames,
+  getPlatformsList,
+} = videogamesSlice.actions;
 
 export default videogamesSlice.reducer;

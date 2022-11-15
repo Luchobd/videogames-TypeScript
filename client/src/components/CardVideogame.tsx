@@ -5,6 +5,7 @@ export const CardVideogame = ({
   genres,
   rating,
   background_image,
+  platforms,
 }: PropsCard) => {
   return (
     <div>
@@ -15,6 +16,7 @@ export const CardVideogame = ({
         <h2>{name}</h2>
         <h3>{genres.map((e: genreName) => e.name)}</h3>
         <h4>{rating}</h4>
+        {/* <h3>{platforms?.map((e) => e)}</h3> */}
       </div>
     </div>
   );
