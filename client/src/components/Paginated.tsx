@@ -14,19 +14,20 @@ export function Paginated({
   }
 
   return (
-    <div>
-      <div>
-        <nav>
-          <ul>
-            {pageNumbers &&
-              pageNumbers.map((page) => (
-                <li key={page}>
-                  <button onClick={() => paginated(page)}>{`${page}`}</button>
-                </li>
-              ))}
-          </ul>
-        </nav>
-      </div>
-    </div>
+    <>
+      <nav className="container__nav">
+        <ul className="nav__ul">
+          {pageNumbers &&
+            pageNumbers.map((page) => (
+              <li key={page} className="nav__ul_list">
+                <button
+                  onClick={() => paginated(page)}
+                  className="nav__ul_btn"
+                >{`${page}`}</button>
+              </li>
+            ))}
+        </ul>
+      </nav>
+    </>
   );
 }

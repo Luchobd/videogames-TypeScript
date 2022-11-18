@@ -57,8 +57,8 @@ export const CardsVideogames: React.FC = () => {
       {videogames.length ? (
         currentVideogames.map((game: any, index) => {
           return (
-            <div key={index}>
-              <Link to={`/${game._id}`} className="">
+            <div key={index} className="cards__container">
+              <Link to={`/${game._id}`} style={{ textDecoration: "none" }}>
                 <CardVideogame
                   name={game.name}
                   genres={game.genres.map((e: string) => e)}

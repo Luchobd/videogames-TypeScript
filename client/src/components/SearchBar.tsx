@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useCustomDispatch } from "../hooks/redux";
 import { getNameVideogame } from "../redux/videogames/videogamesActions";
 import { PropsSearch } from "../interfaces/searchbar.interface";
+import { BiSearchAlt } from "react-icons/bi";
 
 export function SearchBar({ setCurrentPege }: PropsSearch) {
   const dispatch = useCustomDispatch();
@@ -23,14 +24,21 @@ export function SearchBar({ setCurrentPege }: PropsSearch) {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={name}
-        onChange={(e) => handleInputChange(e)}
-      />
-      <button>Click</button>
-    </form>
+    <div className="container">
+      <form onSubmit={(e) => handleSubmit(e)} className="form">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={name}
+          onChange={(e) => handleInputChange(e)}
+          className="form__input"
+        />
+        <button className="form__btn">
+          <i>
+            <BiSearchAlt />
+          </i>
+        </button>
+      </form>
+    </div>
   );
 }

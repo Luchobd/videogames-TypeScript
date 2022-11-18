@@ -8,16 +8,16 @@ export const CardVideogame = ({
   platforms,
 }: PropsCard) => {
   return (
-    <div>
-      <div>
-        <picture>
-          <img src={background_image} alt={name} width={150} />
-        </picture>
-        <h2>{name}</h2>
-        <h3>{genres.map((e: genreName) => e.name)}</h3>
-        <h4>{rating}</h4>
-        {/* <h3>{platforms?.map((e) => e)}</h3> */}
-      </div>
+    <div className="card">
+      <picture className="card__img">
+        <img src={background_image} alt={name} />
+      </picture>
+      <h3 className="card__name">{name}</h3>
+      <h5 className="card__genres">
+        {genres.map((e: genreName) => e.name + " ")}
+      </h5>
+      <h6 className="card__rating">{rating} 🌟</h6>
+      {/* <h3>{platforms?.map((e) => e)}</h3> */}
     </div>
   );
 };

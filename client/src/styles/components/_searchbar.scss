@@ -1,0 +1,40 @@
+.container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  border: 1px solid #a395e990;
+  display: flex;
+  border-radius: 10px;
+
+  &:focus-within {
+    border-color: #a395e9;
+  }
+  &__input {
+    height: 15px;
+    outline: none;
+    border: none;
+    background: transparent;
+    border-radius: 10px 0 0 10px;
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  &__btn {
+    padding-right: 5px;
+    height: 15px;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  &__btn > i {
+    font-size: 11px;
+    background-color: transparent;
+  }
+}

@@ -1,0 +1,40 @@
+.nav__ul {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+
+  &_list {
+    border: 1px solid #a395e975;
+    padding: 0 6px;
+
+    &:first-child {
+      border-radius: 10px 0 0 10px;
+    }
+
+    &:focus-within {
+      border: 1px solid #a395e975;
+      padding: 0px 6px;
+      background-color: #a395e9;
+    }
+
+    &:last-child {
+      border-radius: 0 10px 10px 0;
+    }
+  }
+
+  &_btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:focus-within {
+      color: #fff;
+
+      font-size: 16px;
+    }
+  }
+}
